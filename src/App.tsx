@@ -5,6 +5,7 @@ import { Reset } from './components/Reset/Reset';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logged } from './components/Logged/Logged';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           </Routes>
         </div>
       </div>
-      <div>Footer</div>
+      <Footer/>
     </div>
   );
 }
