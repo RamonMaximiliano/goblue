@@ -11,19 +11,18 @@ function App() {
   return (
     <div className="App">
       <div className="main-div">
-        <div>
-          <img src={oceanImage}></img>
-        </div>
-        <div>
-          <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/ChangePassword" element={<Reset/>}/>
-            <Route path="/Register" element={<Register/>}/>
-            <Route path="/Logged" element={<Logged/>}/>
-          </Routes>
-        </div>
+
+        <div className="main-img" style={{ backgroundImage: `url(${oceanImage})` }}></div>
+
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/ChangePassword" element={<Reset />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Logged" element={<Logged />} />
+        </Routes>
       </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,51 @@
+.login-main{
+    width:40%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding:20px;
+}
+
+.logo-login{
+    margin:auto;
+}
+
+.logo-login img{
+    max-width:280px;
+}
+
+.login-input{
+    display:flex;
+    flex-direction: column;
+}
+
+.login-input input{
+   padding:10px;
+   font-size: 15px;
+   width:100%;
+}
+
+.anchor{
+    text-decoration: none;
+    color:#1a139e;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.signup-link{
+    display:flex;
+    font-size: 14px;
+}
+
+.signin-button{
+    color:white;
+    background-color: #3930df;
+    border: none;
+    padding:10px;
+    border-radius: 5px;
+}
+
+
+
+
