@@ -6,9 +6,8 @@ export const Login = () => {
         <>
             <div className="login-main">
                 <div className="logo-login">
-                <img src={logo}  />
+                    <img src={logo} />
                 </div>
-            
                 <div>
                     <h3>Welcome to GoGreen</h3>
                     <p>Log in to make the world a better place.</p>

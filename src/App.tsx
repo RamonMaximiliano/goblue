@@ -10,19 +10,23 @@ import { Footer } from './components/Footer/Footer';
 function App() {
   return (
     <div className="App">
+
       <div className="main-div">
 
         <div className="main-img" style={{ backgroundImage: `url(${oceanImage})` }}></div>
-
+        <div className="main-side">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/ChangePassword" element={<Reset />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Logged" element={<Logged />} />
         </Routes>
+        </div>
       </div>
 
       <Footer />
+
+
     </div>
   );
 }
