@@ -1,8 +1,50 @@
+import { useState } from "react";
 import logo from "../../images/logo.jpg"
 import './styles.css';
 import { Link } from "react-router-dom";
+import { useContext  } from "react";
+import { DBContext } from "../../DataBase/database";
+
+type User = {
+    name:string,
+    email: string,
+    password:string
+}
 
 export const Register = () => {
+    const [name,setName] = useState("");
+    const [email,setEmail] = useState("");
+    const [password1,setPassword1] = useState("");
+    const [password2,setPassword2] = useState("");
+    const { users, setUsers } = useContext(DBContext);
+
+    function setUser() {
+        if (password1 !== password2) {
+            window.alert("The passwords don't match!");
+            return;
+        }
+        if (email === "") {
+            window.alert("Please provide an E-mail!");
+            return;
+        }
+        if (name === "") {
+            window.alert("Please provide a Name!");
+            return;
+        }
+        const newUser: User = {
+            name: name,
+            email: email,
+            password: password1
+        };
+
+        if (Array.isArray(users)) {
+            setUsers([...users, newUser]);
+            localStorage.setItem("users", JSON.stringify([...users, newUser]));
+        } else {
+            console.error('users is not an array:', users);
+        }
+    }
+    
     return (
         <>
             <div className="register-main">
@@ -14,18 +56,17 @@ export const Register = () => {
                     <p>Register to make the world a better place.</p>
                 </div>
                 <div className="register-input">
-                    <input placeholder="Enter your name" />
-                    <input placeholder="Enter your email" />
-                    <input placeholder="Create password" />
-                    <input placeholder="Confirm password" />
+                    <input placeholder="Enter your name"  value={name} onChange={(e)=>setName(e.target.value)}/>
+                    <input placeholder="Enter your email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                    <input placeholder="Create password" value={password1} onChange={(e)=>setPassword1(e.target.value)}/>
+                    <input placeholder="Confirm password" value={password2} onChange={(e)=>setPassword2(e.target.value)}/>
                 </div>
 
-                <Link to="/" className="anchor"><button className="login-button">Register</button></Link>
+                <Link to="/" className="anchor"><button className="login-button" onClick={()=>setUser()}>Register</button></Link>
                 <div className="login-link">
                     <p>Already have an account?</p>
                     <Link to="/" className="anchor"><p>Login now</p></Link>
                 </div>
-
             </div>
         </>
     )

@@ -1,8 +1,14 @@
 import logo from "../../images/logo.jpg"
 import './styles.css';
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { DBContext } from "../../DataBase/database";
 
 export const Login = () => {
+    const { users } = useContext(DBContext);
+
+
+     console.log(users)   
     return (
         <>
             <div className="login-main">

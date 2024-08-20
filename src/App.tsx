@@ -6,10 +6,12 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logged } from './components/Logged/Logged';
 import { Footer } from './components/Footer/Footer';
+import { DbProvider } from './DataBase/database';
 
 function App() {
   return (
     <>
+    <DbProvider>
       <Routes>
         <Route path="/Logged" element={<Logged />} />
         <Route path="*"
@@ -30,6 +32,7 @@ function App() {
           }
         />
       </Routes>
+      </DbProvider>
     </>
   );
 }
@@ -37,9 +40,15 @@ function App() {
 export default App;
 
 
-
 /*
 
-#1e1b62
+Responsiveness
+Register validation 
+
+https://josiaspereira.com.br/como-usar-localstorage-no-reactjs/
+
+
+
+
 
 */
