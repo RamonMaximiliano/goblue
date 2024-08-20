@@ -9,25 +9,28 @@ import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-
-      <div className="main-div">
-
-        <div className="main-img" style={{ backgroundImage: `url(${oceanImage})` }}></div>
-        <div className="main-side">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/ChangePassword" element={<Reset />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Logged" element={<Logged />} />
-        </Routes>
-        </div>
-      </div>
-
-      <Footer />
-
-
-    </div>
+    <>
+      <Routes>
+        <Route path="/Logged" element={<Logged />} />
+        <Route path="*"
+          element={
+            <div className="App">
+              <div className="main-div">
+                <div className="main-img" style={{ backgroundImage: `url(${oceanImage})` }}></div>
+                <div className="main-side">
+                  <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/ChangePassword" element={<Reset />} />
+                    <Route path="/Register" element={<Register />} />
+                  </Routes>
+                </div>
+              </div>
+              <Footer />
+            </div>
+          }
+        />
+      </Routes>
+    </>
   );
 }
 
@@ -37,11 +40,6 @@ export default App;
 
 /*
 
-Register page 
-Login page 
-Change password page 
-
 #1e1b62
-
 
 */

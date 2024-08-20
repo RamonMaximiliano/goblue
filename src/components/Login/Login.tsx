@@ -1,5 +1,6 @@
 import logo from "../../images/logo.jpg"
 import './styles.css';
+import { Link } from "react-router-dom";
 
 export const Login = () => {
     return (
@@ -17,13 +18,11 @@ export const Login = () => {
                     <input placeholder="Password" />
                 </div>
 
-                <a href="#" className="anchor"><p>Change password</p></a>
-
-                <button className="signin-button">Sign In</button>
-
+                <Link to="/ChangePassword" className="anchor"><p>Change password</p></Link>
+                <Link to="/Logged" className="anchor"><button className="signin-button">Sign In</button></Link>
                 <div className="signup-link">
                     <p>Don&apos;t have an account?</p>
-                    <a href="#" className="anchor"><p>Signup now</p></a>
+                    <Link to="/Register" className="anchor"><p>Signup now</p></Link>
                 </div>
 
             </div>
