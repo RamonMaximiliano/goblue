@@ -44,11 +44,12 @@ export default App;
 
 Responsiveness
 Register validation 
+Delete user functionality
 
 https://josiaspereira.com.br/como-usar-localstorage-no-reactjs/
 
 
-
+https://reactrouter.com/en/main/hooks/use-navigate
 
 
 */

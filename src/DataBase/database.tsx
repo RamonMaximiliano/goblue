@@ -10,6 +10,7 @@ type User = {
 
 export const DbProvider = ({children}:{children:ReactNode})=>{
     const [users,setUsers] = useState<User[]>([]);
+    const [logged,setLogged] = useState<User>();
 
     useEffect(()=>{
         const fetchUsers = async ()=>{
@@ -27,7 +28,7 @@ export const DbProvider = ({children}:{children:ReactNode})=>{
     },[])
 
     return (
-        <DBContext.Provider value={{users,setUsers}}>
+        <DBContext.Provider value={{users,setUsers,logged,setLogged}}>
             {children}
         </DBContext.Provider>
     )
