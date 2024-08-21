@@ -12,10 +12,21 @@ type User = {
 }
 
 export const Logged = () => {
-    const { users, setUsers,logged, setLogged } = useContext(DBContext);
+    const { users, logged, setLogged } = useContext(DBContext);
     const navigate = useNavigate();
 
     function backLogin() {
+        setLogged()
+        navigate("/")
+    }
+
+    function deleteUser() {
+        const filteredUsers: Array<User> = users.filter((user: User) => {
+            return user.email != logged.email
+        })
+        localStorage.removeItem("users")
+        localStorage.setItem("users", JSON.stringify(filteredUsers));
+        window.alert("User deleted successfully!");
         setLogged()
         navigate("/")
     }
@@ -27,7 +38,7 @@ export const Logged = () => {
                     <h1>Welcome <span>{logged.name}</span>, you are now logged!</h1>
                     <div className="logged-buttons">
                         <button onClick={() => backLogin()}>Back to Login</button>
-                        <button>Delete my User</button>
+                        <button onClick={() => deleteUser()}>Delete my User</button>
                     </div>
                 </div>
                 <img src={whale} />

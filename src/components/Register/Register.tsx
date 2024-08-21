@@ -24,11 +24,15 @@ export const Register = () => {
         const findUser = users.find((user: User) => {
             return user.email === email
         })
-
         if (!findUser) {
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (name === "") {
-                window.alert("Please provide a Name!");
+            const nameRegex = /^[a-zA-Z\s]+$/;
+            if (name === "" || !name.trim()) {
+                window.alert("Please provide a valid Name!");
+                return;
+            }
+            if (!nameRegex.test(name)) {
+                window.alert("Please provide a name with only letters and spaces!");
                 return;
             }
             if (email === "") {

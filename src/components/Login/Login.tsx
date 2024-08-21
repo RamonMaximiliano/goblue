@@ -14,21 +14,25 @@ type User = {
 export const Login = () => {
     const [loggedemail, setLoggedEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { users, logged, setLogged } = useContext(DBContext);
+    const { users, setLogged } = useContext(DBContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const loggedUser = users.find((user: User) => {
+    function loginIn() {
+        const loggedUser: User = users.find((user: User) => {
             return user.email === loggedemail
         })
         setLogged(loggedUser)
-    }, [loggedemail]);
-
-    function loginIn() {
-        if (logged) {
-            navigate("/Logged");
-        } else {
-            window.alert("User not found!");
+        if (loggedUser) {
+            if (loggedUser.password === password) {
+                navigate("/Logged");
+                setLoggedEmail("")
+                setPassword("")
+            } else {
+                window.alert("Missing password or password incorrect!");
+            }
+        }
+        if (!loggedUser) {
+            window.alert("User not found or wrong password!");
         }
     }
 
