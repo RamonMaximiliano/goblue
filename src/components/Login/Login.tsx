@@ -13,6 +13,7 @@ type User = {
 
 export const Login = () => {
     const [loggedemail, setLoggedEmail] = useState("");
+    const [password, setPassword] = useState("");
     const { users, logged, setLogged } = useContext(DBContext);
     const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ export const Login = () => {
                 </div>
                 <div className="login-input">
                     <input placeholder="Email" value={loggedemail} onChange={(e) => setLoggedEmail(e.target.value)} />
-                    <input placeholder="Password" />
+                    <input placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
 
                 <Link to="/ChangePassword" className="anchor"><p>Change password</p></Link>
