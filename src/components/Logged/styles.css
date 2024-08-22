@@ -20,16 +20,18 @@
   font-size: 25px;
   color: #2218d6;
 }
+
 .logged-text h1 span {
   color: red;
 }
 
 .logged-buttons {
-  width: 30%;
+  min-width: 30%;
   display: flex;
   justify-content: space-between;
   margin: auto;
   margin-top:20px;
+  margin-bottom:20px;
   flex-wrap: wrap;
 }
 
@@ -44,6 +46,7 @@
   border: none;
   border-radius: 5px;
   transition: all 100ms;
+  margin:10px;
 }
 
 .logged-buttons button:hover {
@@ -51,3 +54,20 @@
   cursor: pointer;
   transition: all 100ms;
 }
+
+@media (max-width: 555px) {
+  .logged-buttons {
+    flex-direction: column;
+  }
+  .main-logged {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .logged-text {
+    height: 90%;
+  }
+}
+
+
+

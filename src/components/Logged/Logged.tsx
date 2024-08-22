@@ -1,6 +1,5 @@
 import whale from "../../images/whale.jpg"
 import './styles.css';
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DBContext } from "../../DataBase/database";
 import { useNavigate } from "react-router-dom";

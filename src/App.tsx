@@ -42,7 +42,6 @@ export default App;
 
 /*
 
-Responsiveness
 Delete all users from browser
 lowercase validation for e-mail
 
