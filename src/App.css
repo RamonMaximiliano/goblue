@@ -32,5 +32,19 @@
 }
 
 @media (max-width: 768px) {
-
+  .main-side {
+    width:100%;
+  }
+  .main-img {
+    display:none;
+  }
+  
+}
+@media (max-width: 500px) {
+  .main-side {
+    min-width:80%;
+  } 
+  .main-img {
+    display:none;
+  }
 }

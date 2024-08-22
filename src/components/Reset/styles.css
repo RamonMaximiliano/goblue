@@ -87,3 +87,30 @@
   cursor: pointer;
   transition: all 100ms;
 }
+
+@media (max-width: 768px) {
+  .change-main {
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+  }
+
+  .change-input input {
+    width: 100%;
+  }
+
+  .change-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo-change {
+    display:flex;
+  }
+  .logo-change img {
+    max-width: 80%;
+    margin:auto;
+  }
+}

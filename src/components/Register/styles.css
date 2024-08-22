@@ -87,3 +87,30 @@
   cursor: pointer;
   transition: all 100ms;
 }
+
+@media (max-width: 768px) {
+  .register-main {
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+  }
+
+  .register-input input {
+    width: 100%;
+  }
+
+  .login-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo-register {
+    display:flex;
+  }
+  .logo-register img {
+    max-width: 80%;
+    margin:auto;
+  }
+}
