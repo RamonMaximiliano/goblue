@@ -20,6 +20,7 @@
 .footer-image {
   padding: 8px;
   width: 130px;
+  cursor: pointer;
 }
 
 .border {

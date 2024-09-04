@@ -4,12 +4,20 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import logo from "../../images/logo.jpg"
 
+
+
+function deleteUsers(){
+    localStorage.clear()
+}
+
+
+
 export const Footer = () => {
     return (
         <>
             <footer className="footer" id="footer">
                 <div className="footer-left">
-                    <img src={logo} alt={"Logo Image"} className="footer-image"/>
+                    <img src={logo} alt={"Logo Image"} className="footer-image" onClick={()=>deleteUsers()} title="Click here to delete all users from the DB"/>
                     <div className="border"></div>  
                     <ul className="footer-list">
                         <li>© Copyright 2024 All Rights Reserved</li>
