@@ -42,9 +42,6 @@ export default App;
 
 /*
 
-Delete all users from browser
-lowercase validation for e-mail
-
 https://josiaspereira.com.br/como-usar-localstorage-no-reactjs/
 https://reactrouter.com/en/main/hooks/use-navigate
 
@@ -64,10 +61,7 @@ These tests focus on individual functions and components to ensure they behave a
   - Test success and error responses from the API.
   - Verify that the correct data is sent to the API endpoints.
 
-- **Component Rendering Tests**
-  - Test if each component (e.g., LoginForm, RegisterForm, UpdateUserForm) renders correctly.
-  - Ensure that UI elements like buttons, input fields, and error messages are displayed as expected.
-
+  
 ### 2. **Integration Tests**
 
 These tests ensure that the components work together correctly.
@@ -113,6 +107,22 @@ These tests ensure your application handles unexpected or extreme situations.
 
 ### 5. **Performance Tests (Optional)**
   - If applicable, write tests to ensure that key actions (like login or registration) perform well under load.
+
+
+
+
+
+
+  
+
+FINISHED:
+
+### 1. **Unit Tests**
+
+**Component Rendering Tests**
+Test if each component (e.g., LoginForm, RegisterForm, UpdateUserForm) renders correctly.
+Ensure that UI elements like buttons, input fields, and error messages are displayed as expected.
+
 
 
   
