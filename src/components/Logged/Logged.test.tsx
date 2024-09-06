@@ -5,6 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { DBContext } from '../../DataBase/database';
 import "@testing-library/jest-dom"
 
+//Had to mock the context provided with below settings and fake data
+
+
 describe("Logged testing", () => {
     it("Should render the component with mocked context", () => {
         render(

@@ -51,6 +51,9 @@ TESTS:
 
 These tests focus on individual functions and components to ensure they behave as expected.
 
+
+REWRITE THE LOGIN TEST TO MEMORIZE DETAILS 
+
 - **Form Validation Tests**
   - Ensure that required fields (like username, email, and password) are validated correctly.
   - Test validation for incorrect inputs (e.g., invalid email format, weak passwords).
