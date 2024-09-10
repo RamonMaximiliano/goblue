@@ -12,58 +12,121 @@ jest.mock('react-router-dom', () => ({
     useNavigate: jest.fn(),
 }));
 
-describe("Login testing", () => {
-    const mockNavigate = jest.fn();
-
-    // Mocking useNavigate:
-    /*This block defines a function that runs before each test in the "Login testing" suite. It's a good practice to set up your test environment here.*/
-    beforeEach(() => {
-        (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
-        jest.clearAllMocks(); // Clear mocks before each test
-    });
+describe("Login component", () => {
 
     //TEST 1 - render the component
     it("Should render the component", () => {
-        render(<BrowserRouter><Login /></BrowserRouter>);
-        const LoginID = screen.getByText(/Welcome to GoGreen/i);
-        expect(LoginID).toBeInTheDocument();
-    });
- 
-     //TEST 2 - Email and password are being provided
-    test('Email and password are being provided', () => {
-         const mockSetLogged = jest.fn();
-
-        const mockUsers = [
-            { name: 'John Doe', email: 'john@example.com', password: 'password123' },
-        ];
-
-        render(
-            <DBContext.Provider value={{
-                users: mockUsers,
-                setLogged: mockSetLogged
-            }}>
-                <BrowserRouter>
-                    <Login />
-                </BrowserRouter>
-            </DBContext.Provider>
-        );
-       
-        // Simulate entering email
-        const emailInput = screen.getByPlaceholderText('Email');
-        fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
-        expect(emailInput).toHaveValue('john@example.com'); // Check value
-
-        // Simulate entering password
-        const passwordInput = screen.getByPlaceholderText('Password');
-        fireEvent.change(passwordInput, { target: { value: 'password123' } });
-        expect(passwordInput).toHaveValue('password123'); // Check value
-
-        // Click the "Sign In" button
-        fireEvent.click(screen.getByText('Sign In'));
-
-        // Debugging: Check whether loginIn function sets the state and calls navigate
-        expect(mockSetLogged).toHaveBeenCalledWith(mockUsers[0]); // Check setLogged call
-        expect(mockNavigate).toHaveBeenCalledWith('/Logged'); // Check navigation call
+        render(<BrowserRouter><Login /></BrowserRouter>)
+        //Below regex is getting whatever element with that text even if there is soemthing after or before the text provided
+        const LoginText = screen.getByText(/(.*)Welcome to GoGre(.*)/i);
+        expect(LoginText).toBeInTheDocument();
     })
-})
+
+    //TEST 2 - Email and password are being provided
+    describe("Email and password are being provided when clicking Login", () => {
+
+        //SUB-TEST 1 - Email being provided
+        test("Simulate entering email", () => {
+            //Mocking a fake function, this is necessary for the context provider below
+            const mockSetLogged = jest.fn();
+
+            //mocking a fake user to be provided in the context, this is necessary for the context provider below
+            const mockUsers = [
+                { name: 'John Doe', email: 'john@example.com', password: 'password123' },
+            ];
+
+            render(
+                <DBContext.Provider value={{
+                    users: mockUsers,
+                    setLogged: mockSetLogged
+                }}>
+                    <BrowserRouter><Login /></BrowserRouter>
+                </DBContext.Provider>
+            );
+            // Simulate entering email
+            const emailInput = screen.getByPlaceholderText('Email');
+            fireEvent.change(emailInput, { target: { value: "maria@example.com" } });
+            expect(emailInput).toHaveValue("maria@example.com");
+        })
+
+        //SUB-TEST 2 - password being provided
+        test("Simulate entering password", () => {
+            //Mocking a fake function, this is necessary for the context provider below
+            const mockSetLogged = jest.fn();
+
+            //mocking a fake user to be provided in the context, this is necessary for the context provider below
+            const mockUsers = [
+                { name: 'John Doe', email: 'john@example.com', password: 'password123' },
+            ];
+
+            render(
+                <DBContext.Provider value={{
+                    users: mockUsers,
+                    setLogged: mockSetLogged
+                }}>
+                    <BrowserRouter><Login /></BrowserRouter>
+                </DBContext.Provider>
+            );
+            // Simulate entering password
+            const passwordInput = screen.getByPlaceholderText('Password');
+            fireEvent.change(passwordInput, { target: { value: "randomPassword123" } });
+            expect(passwordInput).toHaveValue("randomPassword123");
+        })
+
+    })
+
+    //TEST 3 - Click the "Sign In" button, sets the state and calls navigate
+    describe("'Sign In' button function sets the state and calls navigate", () => {
+        const mockNavigate = jest.fn();
+        // Mocking useNavigate:
+        /*This block defines a function that runs before each test in the "Login testing" suite. It's a good practice to set up your test environment here.*/
+        beforeEach(() => {
+            (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+            jest.clearAllMocks(); // Clear mocks before each test
+        });
+
+        //SUB-TEST 1 - Set the logged user whern clicking "Sign In" button 
+        it("Should set the logged user and navigate", () => {
+            //Mocking a fake function, this is necessary for the context provider below
+            const mockSetLogged = jest.fn();
+
+
+            //mocking a fake user to be provided in the context, this is necessary for the context provider below
+            const mockUsers = [
+                { name: 'John Doe', email: 'john@example.com', password: 'password123' },
+            ];
+
+            render(
+                <DBContext.Provider value={{
+                    users: mockUsers,
+                    setLogged: mockSetLogged
+                }}>
+                    <BrowserRouter><Login /></BrowserRouter>
+                </DBContext.Provider>
+            );
+
+            // Simulate entering email
+            const emailInput = screen.getByPlaceholderText('Email');
+            fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+
+            // Simulate entering password
+            const passwordInput = screen.getByPlaceholderText('Password');
+            fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+            // Simulate clicking 'Sign In' 
+            fireEvent.click(screen.getByText('Sign In'));
+            expect(mockSetLogged).toHaveBeenCalledWith(mockUsers[0]);
+
+            // Check navigation call
+            expect(mockNavigate).toHaveBeenCalledWith('/Logged'); 
+        })
+
+    });
+});
+
+
+
+
+
+
 
