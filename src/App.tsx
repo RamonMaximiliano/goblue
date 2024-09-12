@@ -45,20 +45,6 @@ export default App;
 https://josiaspereira.com.br/como-usar-localstorage-no-reactjs/
 https://reactrouter.com/en/main/hooks/use-navigate
 
-TESTS:
-
-### 1. **Unit Tests**
-
-These tests focus on individual functions and components to ensure they behave as expected.
-
-
-REWRITE THE LOGIN TEST TO MEMORIZE DETAILS 
-
-- **Form Validation Tests**
-  - Ensure that required fields (like username, email, and password) are validated correctly.
-  - Test validation for incorrect inputs (e.g., invalid email format, weak passwords).
-  - Ensure error messages are displayed appropriately.
-
 - **API Interaction Tests**
   - Mock API calls for registration, login, update, and delete actions.
   - Test success and error responses from the API.
@@ -110,21 +96,6 @@ These tests ensure your application handles unexpected or extreme situations.
 
 ### 5. **Performance Tests (Optional)**
   - If applicable, write tests to ensure that key actions (like login or registration) perform well under load.
-
-
-
-
-
-
-  
-
-FINISHED:
-
-### 1. **Unit Tests**
-
-**Component Rendering Tests**
-Test if each component (e.g., LoginForm, RegisterForm, UpdateUserForm) renders correctly.
-Ensure that UI elements like buttons, input fields, and error messages are displayed as expected.
 
 
 

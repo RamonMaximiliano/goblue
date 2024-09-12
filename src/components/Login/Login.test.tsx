@@ -73,6 +73,79 @@ describe("Login component", () => {
             expect(passwordInput).toHaveValue("randomPassword123");
         })
 
+        test("empty input EMAIL should trigger error message", () => {
+            //Mocking a fake function, this is necessary for the context provider below
+            const mockSetLogged = jest.fn();
+
+            //mocking a fake user to be provided in the context, this is necessary for the context provider below
+            const mockUsers = [
+                { name: 'John Doe', email: 'john@example.com', password: 'password123' },
+            ];
+
+            // Mocking window.alert because Jest and Testing Library don't natively render or interact with browser alert dialogs (window.alert, window.confirm, etc.) because these are handled by the browser, not the DOM.
+            window.alert = jest.fn();
+
+            render(
+                <DBContext.Provider value={{
+                    users: mockUsers,
+                    setLogged: mockSetLogged
+                }}>
+                    <BrowserRouter><Login /></BrowserRouter>
+                </DBContext.Provider>
+            );
+
+            // Simulate entering email
+            const emailInput = screen.getByPlaceholderText('Email');
+            fireEvent.change(emailInput, { target: { value: '' } });
+
+            // Simulate entering password
+            const passwordInput = screen.getByPlaceholderText('Password');
+            fireEvent.change(passwordInput, { target: { value: 'password123' } });
+
+            // Simulate clicking 'Sign In' 
+            fireEvent.click(screen.getByText('Sign In'));
+
+            // Check if alert was called with the expected message
+            expect(window.alert).toHaveBeenCalledWith("User not found or wrong password!");
+
+        })
+        test("empty input PASSWORD should trigger error message", () => {
+            //Mocking a fake function, this is necessary for the context provider below
+            const mockSetLogged = jest.fn();
+
+            //mocking a fake user to be provided in the context, this is necessary for the context provider below
+            const mockUsers = [
+                { name: 'John Doe', email: 'john@example.com', password: 'password123' },
+            ];
+
+            // Mocking window.alert because Jest and Testing Library don't natively render or interact with browser alert dialogs (window.alert, window.confirm, etc.) because these are handled by the browser, not the DOM.
+            window.alert = jest.fn();
+
+            render(
+                <DBContext.Provider value={{
+                    users: mockUsers,
+                    setLogged: mockSetLogged
+                }}>
+                    <BrowserRouter><Login /></BrowserRouter>
+                </DBContext.Provider>
+            );
+
+            // Simulate entering email
+            const emailInput = screen.getByPlaceholderText('Email');
+            fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+
+            // Simulate entering password
+            const passwordInput = screen.getByPlaceholderText('Password');
+            fireEvent.change(passwordInput, { target: { value: '' } });
+
+            // Simulate clicking 'Sign In' 
+            fireEvent.click(screen.getByText('Sign In'));
+
+            // Check if alert was called with the expected message
+            expect(window.alert).toHaveBeenCalledWith("Missing password or password incorrect!");
+
+        })
+
     })
 
     //TEST 3 - Click the "Sign In" button, sets the state and calls navigate
@@ -118,7 +191,7 @@ describe("Login component", () => {
             expect(mockSetLogged).toHaveBeenCalledWith(mockUsers[0]);
 
             // Check navigation call
-            expect(mockNavigate).toHaveBeenCalledWith('/Logged'); 
+            expect(mockNavigate).toHaveBeenCalledWith('/Logged');
         })
 
     });
