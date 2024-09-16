@@ -108,7 +108,8 @@ describe("Login component", () => {
             // Check if alert was called with the expected message
             expect(window.alert).toHaveBeenCalledWith("User not found or wrong password!");
 
-        })
+        });
+
         test("empty input PASSWORD should trigger error message", () => {
             //Mocking a fake function, this is necessary for the context provider below
             const mockSetLogged = jest.fn();
