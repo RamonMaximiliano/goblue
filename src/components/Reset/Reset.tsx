@@ -46,7 +46,7 @@ export const Reset = () => {
             return;
         }
 
-        if (findUser.password === oldPassword && findUser) {
+        if (findUser && findUser.password === oldPassword) {
             const filteredUsers: Array<User> = users.map((user: User) => {
                 let newuser: User
                 if (user.email === findUser.email) {
